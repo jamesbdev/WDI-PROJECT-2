@@ -9,7 +9,7 @@ const router         = require('./config/routes');
 const app            = express();
 const port           = process.env.PORT ||3000;
 
-const databaseUrl    = 'mongodb://localhost/movieApp';
+const databaseUrl    = 'mongodb://localhost/bibim-App';
 mongoose.connect(databaseUrl, () => {
   return console.log(`Connected to db: ${databaseUrl}`);
 });

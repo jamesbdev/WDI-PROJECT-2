@@ -17,6 +17,11 @@ example of wireframing:
 /Users/James/Desktop/Screen Shot 2017-01-11 at 
 18.59.47.png
 
+I did some research about the Google Places API and created a user key.
+
+Then I started writing code to set up the API starting with the index.js page. 
+
+
 
 
 
