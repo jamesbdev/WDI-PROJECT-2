@@ -1,32 +1,60 @@
-const gulp     = require('gulp');
-const print    = require('gulp-print');
-const postcss  = require('gulp-postcss');
-const nested   = require('postcss-nested');
-const atImport = require('postcss-import');
-const cssNext  = require('postcss-cssnext');
+const gulp        = require('gulp');
+const babel       = require('gulp-babel');
+const sass        = require('gulp-sass');
+const nodemon     = require('gulp-nodemon');
+const cleanCSS 	  = require('gulp-clean-css');
+const uglify      = require('gulp-uglify');
+const imagemin    = require('gulp-imagemin');
+const browserSync = require('browser-sync').create();
 
-// List all tasks `gulp -T`
-// Run a specific task with `gulp <name-of-task>`
-
-const something = () => {
-  console.log('Running something task');
-};
-
-gulp.task('something', something);
-
-gulp.task('css', () => {
-  return gulp.src('src/css/style.css')
-    .pipe(print())
-    .pipe(postcss([
-      atImport,
-      cssNext({browsers: ['last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4']}),
-      nested
-    ]))
-    .pipe(gulp.dest('public'));
+gulp.task('es6', () => {
+  return gulp.src('src/js/*.js')
+  .pipe(babel({ presets: ['es2015'] }))
+  .pipe(uglify())
+  .pipe(gulp.dest('public/js'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch('src/**/*.css', ['css']);
+gulp.task('sass', () => {
+  return gulp.src('src/scss/**/*.scss')
+  .pipe(sass().on('error', sass.logError))
+  .pipe(cleanCSS({ compatibility: 'ie8'}))
+  .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('default', ['css', 'watch']);
+gulp.task('images', () => {
+  return gulp.src('src/images/**/*.{png,jpg,jpeg,gif,ico}')
+    .pipe(imagemin({
+      optimizationLevel: 3,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest('public/images'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('fonts', () => {
+  return gulp.src('src/fonts/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest('public/fonts'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('serve', ['es6', 'sass'], () => {
+  browserSync.init({
+    proxy: 'http://localhost:3000',
+    files: ['public/**/*.*'],
+    browser: 'google chrome',
+    port: 7000,
+    reloadDelay: 500
+  });
+
+  return nodemon({ script: 'index.js'})
+    .on('start', () => browserSync.reload());
+});
+
+gulp.task('default', ['sass', 'es6', 'images', 'fonts', 'serve'], () => {
+  gulp.watch('src/scss/**/*.scss', ['sass']);
+  gulp.watch('src/js/*.js', ['es6']);
+  gulp.watch('src/images/**/*.{png,jpg,jpeg,gif,ico}', ['images']);
+  gulp.watch('src/fonts/**/*.{eot,svg,ttf,woff,woff2}', ['fonts']);
+  gulp.watch('**/*.html', browserSync.reload);
+});

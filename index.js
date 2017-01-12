@@ -1,40 +1,43 @@
 const express        = require('express');
 const morgan         = require('morgan');
-const ejsLayouts     = require('express-ejs-layouts');
-const methodOverride = require('method-override');
 const mongoose       = require('mongoose');
 const bodyParser     = require('body-parser');
-const router         = require('./config/routes');
+const cors           = require('cors');
+const expressJWT     = require('express-jwt');
+
+const config         = require('./config/config');
+const webRouter      = require('./config/webRoutes');
+const apiRouter      = require('./config/apiRoutes');
 
 const app            = express();
-const port           = process.env.PORT ||3000;
 
-const databaseUrl    = 'mongodb://localhost/bibim-App';
-mongoose.connect(databaseUrl, () => {
-  return console.log(`Connected to db: ${databaseUrl}`);
+mongoose.connect(config.db, () => {
+  return console.log(`Connected to db: ${config.db}`);
 });
 
-app.set('view engine', 'ejs');
-app.set('views', `${__dirname}/views`);
-
 app.use(morgan('dev'));
-app.use(express.static(`${__dirname}/bower_components`));
-app.use(express.static(`${__dirname}/public`));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(methodOverride(req => {
-  if (req.body && typeof req.body === 'object' && '_method' in req.body){
-    const method = req.body._method;
-    delete req.body._method;
-    return method;
+app.use(cors());
+app.use(express.static(`${__dirname}/public`));
 
-  }
+app.use('/api', expressJWT({ secret: config.secret })
+  .unless({
+    path: [
+      { url: '/api/register', methods: ['POST'] },
+      { url: '/api/login',    methods: ['POST'] }
+    ]
+  }));
+app.use(jwtErrorHandler);
 
-}));
+function jwtErrorHandler(err, req, res, next){
+  if (err.name !== 'UnauthorizedError') return next();
+  return res.status(401).json({ message: 'Unauthorized request.' });
+}
 
-app.use(ejsLayouts);
-app.use('/', router);
+app.use('/', webRouter);
+app.use('/api', apiRouter);
 
-app.listen(port, () => {
-  return console.log(`Express is listening on port ${port}`);
-
+app.listen(config.port, () => {
+  return console.log(`Express is listening on port ${config.port}`);
 });
