@@ -21,6 +21,13 @@ I did some research about the Google Places API and created a user key.
 
 Then I started writing code to set up the API starting with the index.js page. 
 
+Day 2 - Today wrote the config routes files, the controllers and models. (with help from Johnnie) 
+
+getting error: unexpected identifier
+challenges: don't fully understand user model 
+
+
+
 
 
 
