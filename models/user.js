@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bycrypt  = require('bycrypt');
+const bcrypt  = require('bcrypt');
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
@@ -9,49 +9,37 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema
-  .virtual('password')
-  .set(setPassword);
+.virtual('password')
+.set(setPassword);
 
 userSchema
-  .virtual('passwordConfirmation')
-  .set('passwordConfirmation');
+.virtual('passwordConfirmation')
+.set(setPasswordConfirmation);
 
 userSchema
-  .path('passwordHash')
-  .validate(validatePasswordHash);
+.path('passwordHash')
+.validate(validatePasswordHash);
 
 userSchema
-  .path('email')
-  .validate(validateEmail);
+.path('email')
+.validate(validateEmail);
 
 userSchema.methods.validatePassword = validatePassword;
 
 userSchema.set('toJSON', {
-  transform: function(doc,ret) {
+  transform: function(doc, ret) {
     delete ret.passwordHash;
     delete ret.email;
     delete ret.__v;
     return ret;
   }
-
-module.exports = mongoose.model('User', userSchema);
-
-userSchema.set('to JSON', {
-  transform: function(doc, ret) {
-    delete: ret.passwordHash;
-    delete: ret.email;
-    delete: ret.__v;
-    return ret;
-  }
-
 });
 
 module.exports = mongoose.model('User', userSchema);
 
-
-function setpassword(value) {
+function setPassword(value) {
   this._password = value;
-  this.passwordHash = bycrypt.hashSync(value, bycrypt.genSaltSync(8));
+  this.passwordHash = bcrypt.hashSync(value, bcrypt.genSaltSync(8));
 }
 
 function setPasswordConfirmation(passwordConfirmation) {
@@ -75,11 +63,11 @@ function validatePasswordHash() {
   }
 }
 
-function validatePassword(password {
-  return bycrypt.compareSync(password, this.passwordHash);
+function validatePassword(password) {
+  return bcrypt.compareSync(password, this.passwordHash);
 }
 
-function validateEmail() {
+function validateEmail(email) {
   if(!validator.isEmail(email)) {
     return this.invalidate('email', 'must be a valid email address');
   }

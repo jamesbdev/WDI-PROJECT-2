@@ -1,16 +1,15 @@
 const router      = require('express').Router();
 
 const restaurants = require('../controllers/restaurants');
-const register    = require('../controllers/authentications');
-const login       = require('../controllers/authentications');
+const authentication = require('../controllers/authentications');
 
 router.route('/restaurants')
   .get(restaurants.index);
 
 router.route('/register')
-  .get(register.index);
+  .post(authentication.register);
 
 router.route('/login')
-  .get(login.index);
+  .post(authentication.login);
 
 module.exports = router;
