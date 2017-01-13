@@ -26,6 +26,13 @@ Day 2 - Today wrote the config routes files, the controllers and models. (with h
 getting error: unexpected identifier
 challenges: don't fully understand user model 
 
+Day 3 
+
+- corrected some mistakes with Alfredo and started writing the index.js file. stuck on typo. 
+- stuck on latlng not defined
+
+
+
 
 
 

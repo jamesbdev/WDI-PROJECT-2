@@ -1,5 +1,9 @@
+
+
 const App = App || {};
+
 const google = google;
+
 App.mapSetup = function() {
   const canvas = document.getElementById('map-container');
 
@@ -24,30 +28,34 @@ App.loopThroughArray = function(data) {
 };
 
 App.addMarkerForApp = function(app) {
-  const latLng = new google.maps.Latlng(app.lat, app.lng);
-};
+  const latlng = new google.maps.LatLng(app.lat, app.lng);
+
 
 const marker = new google.maps.Marker({
-  position: latLng,
+  position: latlng,
   map: this.map
 });
 
 this.addInfoWindowForApp(App,marker);
+
+
 
 App.addInfoForApp = function(app, marker) {
   google.maps.event.addListener(marker, 'click', () => {
     if (typeof this.infoWindow !== 'undefined') this.infoWindow.close();
   });
 
-    this.infoWindow = new google.maps.InfoWindow({
-      content: `
+  this.infoWindow = new google.maps.InfoWindow({
+    content: `
       <div class = "info-window">
-        <img src = ${ app.image }>
-        <p>${ gym.name }</p>
+        <img src =${ app.image }>
+        <p>${ app.name }</p>
         </div>
         `
-    });
+  });
 
-    
+  this.infoWindow.open(this.map, marker);
 
-}
+};
+
+$(App.mapSetup.bind(App));
