@@ -1,1 +1,60 @@
-"use strict";var App=App||{},google=google;App.mapSetup=function(){var o=document.getElementById("map-container"),p={zoom:14,center:new google.maps.LatLng(51.506178,(-.088369)),mapTypeId:google.maps.MapTypeId.ROADMAP};this.map=new google.maps.LatLng(o,p),this.getApp()},App.getApp=function(){$.get("http://localhost:3000/restaurants").done(this.loopThroughArray)},App.loopThroughArray=function(o){$.each(o,function(o,p){App.addMarkerForApp(p)})},App.addMarkerForApp=function(o){new google.maps.LatLng(o.lat,o.lng)};var marker=new google.maps.Marker({position:latlng,map:(void 0).map});(void 0).addInfoWindowForApp(App,marker),App.addInfoForApp=function(o,p){var n=this;google.maps.event.addListener(p,"click",function(){"undefined"!=typeof n.infoWindow&&n.infoWindow.close()}),this.infoWindow=new google.maps.InfoWindow({content:'\n      <div class = "info-window">\n        <img src ='+o.image+">\n        <p>"+o.name+"</p>\n        </div>\n        "}),this.infoWindow.open(this.map,p)},$(App.mapSetup.bind(App));
+const App = App || {};
+const google = google;
+
+App.mapSetup = function() {
+  const canvas = document.getElementsById('map-container');
+
+  const mapOptions = {
+    zoom: 14,
+    center: new google.maps.LatLng(51.506178,-0.088369),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  this.map = new google.maps.Map(canvas, mapOptions);
+  this.getApps();
+};
+
+App.getApps = function() {
+  $.get('http://localhost:3000/restaurants').done(this.loopThroughArray);
+};
+
+App.loopThroughArray = function(data) {
+  $.each(data, (index, app)=> {
+    App.addMarkerForApp(app);
+
+  });
+};
+
+Gym.addMarkerForApp = function(gym) {
+  const latlng = new google.maps.LatLng(gym.lat, gym.lng);
+
+  const marker = new google.maps.Marker({
+    position: latlng,
+    map: this.map
+  });
+
+  this.addInfoWindowForApp(app,marker);
+
+  App.addInfoWindowForApp = function(app, marker) {
+  google.maps.event.addListener(marker, 'click', () => {
+    if (typeof this.infoWindow !== 'undefined') this.infoWindow.close();
+
+    this.infoWindow = new google.maps.InfoWindow({
+      content: `
+      <div class="info-window">
+        <img src=${ app.image }>
+        <p>${ app.name }</p>
+      </div>
+      `
+    });
+
+    this.infoWindow.open(this.map, marker);
+  });
+};
+
+$(Gym.mapSetup.bind(Gym));
+
+
+
+
+}

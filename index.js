@@ -41,3 +41,7 @@ app.use('/api', apiRouter);
 app.listen(config.port, () => {
   return console.log(`Express is listening on port ${config.port}`);
 });
+
+app.use(function (req, res, next) {
+  res.status(404).send('Sorry cant find that!');
+});

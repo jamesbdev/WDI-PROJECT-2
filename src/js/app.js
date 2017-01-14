@@ -31,31 +31,31 @@ App.addMarkerForApp = function(app) {
   const latlng = new google.maps.LatLng(app.lat, app.lng);
 
 
-const marker = new google.maps.Marker({
-  position: latlng,
-  map: this.map
-});
-
-this.addInfoWindowForApp(App,marker);
-
-
-
-App.addInfoForApp = function(app, marker) {
-  google.maps.event.addListener(marker, 'click', () => {
-    if (typeof this.infoWindow !== 'undefined') this.infoWindow.close();
+  const marker = new google.maps.Marker({
+    position: latlng,
+    map: this.map
   });
 
-  this.infoWindow = new google.maps.InfoWindow({
-    content: `
+  this.addInfoWindowForApp(App,marker);
+
+
+
+  App.addInfoForApp = function(app, marker) {
+    google.maps.event.addListener(marker, 'click', () => {
+      if (typeof this.infoWindow !== 'undefined') this.infoWindow.close();
+    });
+
+    this.infoWindow = new google.maps.InfoWindow({
+      content: `
       <div class = "info-window">
         <img src =${ app.image }>
         <p>${ app.name }</p>
         </div>
         `
-  });
+    });
 
-  this.infoWindow.open(this.map, marker);
+    this.infoWindow.open(this.map, marker);
 
+  };
 };
-
 $(App.mapSetup.bind(App));
