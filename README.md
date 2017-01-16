@@ -31,6 +31,11 @@ Day 3
 - corrected some mistakes with Alfredo and started writing the index.js file. stuck on typo. 
 - stuck on latlng not defined
 
+Day 4 
+
+stuck on a 404 error for one of my controller files restaurants
+
+
 
 
 

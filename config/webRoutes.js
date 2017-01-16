@@ -1,5 +1,4 @@
-const router = require('express').Router();
-
+const router  = require('express').Router();
 const statics = require('../controllers/statics');
 
 router.route('/')

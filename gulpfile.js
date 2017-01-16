@@ -41,7 +41,7 @@ gulp.task('fonts', () => {
 gulp.task('serve', ['es6', 'sass'], () => {
   browserSync.init({
     proxy: 'http://localhost:3000',
-    files: ['public/**/*.*'],
+    files: ['src/**/*.*'],
     browser: 'google chrome',
     port: 7000,
     reloadDelay: 500
