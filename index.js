@@ -28,12 +28,12 @@ app.use(express.static(`${__dirname}/public`));
 //       { url: '/api/login',    methods: ['POST'] }
 //     ]
 //   }));
-// app.use(jwtErrorHandler);
+app.use(jwtErrorHandler);
 
-// function jwtErrorHandler(err, req, res, next){
-//   if (err.name !== 'UnauthorizedError') return next();
-//   return res.status(401).json({ message: 'Unauthorized request.' });
-// }
+function jwtErrorHandler(err, req, res, next){
+  if (err.name !== 'UnauthorizedError') return next();
+  return res.status(401).json({ message: 'Unauthorized request.' });
+}
 
 app.use('/api', apiRouter);
 app.use('/', webRouter);

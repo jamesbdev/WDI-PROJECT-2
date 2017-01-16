@@ -28,11 +28,76 @@ user.forEach(user => {
 const restaurants = [
   {
     name: 'Arang',
-    image: 'https://www.google.co.uk/maps/place/Arang+Restaurant/@51.511647,-0.136706,3a,75y,90t/data=!3m8!1e2!3m6!1s-QqV_ICKTduM%2FWCKOyPfQj1I%2FAAAAAAAAAP8%2F87TYrroTHiwPwisQ9V9tkprt2nUg6nS6gCLIB!2e4!3e12!6s%2F%2Flh4.googleusercontent.com%2F-QqV_ICKTduM%2FWCKOyPfQj1I%2FAAAAAAAAAP8%2F87TYrroTHiwPwisQ9V9tkprt2nUg6nS6gCLIB%2Fs152-k-no%2F!7i720!8i1280!4m5!3m4!1s0x487604d4679897a3:0x47e060528bb3f7ee!8m2!3d51.511713!4d-0.136568!6m1!1e1',
+    image: 'https://munchmyway.files.wordpress.com/2013/09/20130906-004148.jpg',
     lat: '51.511722',
     lng: '-0.136573'
+  },
+  {
+    name: 'On The Bab Covent Garden',
+    image: 'http://2.bp.blogspot.com/-rngOBezrZug/VgljBAwSzjI/AAAAAAAAMds/6xiTFAbC38g/s1600/On%2BThe%2BBab%253A%2BRestaurant%2BReview.JPG',
+    lat: '51.512461',
+    lng: ' -0.120751'
+  },
+
+  {
+    name: 'Kimchee Restaurant and Bar',
+    image: 'https://koreanclassmassive.files.wordpress.com/2014/01/p1110048.jpg',
+    lat: '51.518158',
+    lng: ' -0.116402'
+  },
+
+  {
+    name: 'Hozi',
+    image: 'https://pbs.twimg.com/media/Cpl4qboWAAE0fON.jpg',
+    lat: '51.520234',
+    lng: '-0.117687'
+  },
+
+
+  {
+    name: 'Naru',
+    image: 'https://pbs.twimg.com/media/Cpl4qboWAAE0fON.jpg',
+    lat: '51.518158',
+    lng: '-0.125894'
+  },
+
+  {
+    name: 'Asadal',
+    image: 'http://www.lacartes.com/images/business/932/2802/m/8715.jpg',
+    lat: '51.517487',
+    lng: '-0.120126'
+  },
+
+  {
+    name: 'Bibigo',
+    image: 'http://bibigouk.com/wp-content/uploads/2015/10/4632_122451_large.jpg',
+    lat: '51.514695',
+    lng: '-0.137329'
+  },
+
+  {
+    name: 'Arirang',
+    image: 'https://munchmyway.files.wordpress.com/2013/07/20130721-190237.jpg',
+    lat: '51.515536',
+    lng: '-0.137490'
+  },
+
+  {
+    name: 'Bibimpap Soho',
+    image: 'https://www.fluidnetwork.co.uk/gfx/venues/22472/bimbimbap_soho_korean_restaurant_london_3.jpg',
+    lat: '51.514399',
+    lng: '-0.130934'
+  },
+
+  {
+    name: 'Kalbi Korean bbq and sushi',
+    image: 'https://d6zktcp1soofu.cloudfront.net/kalbi-korean-bbq-sushi-13864/landscape.vlZDj_landscape.jpg',
+    lat: '51.524197',
+    lng: '-0.111090'
   }
 ];
+
+
 
 restaurants.forEach(restaurant => {
   Restaurant.create(restaurant, (err, restaurant) => {
