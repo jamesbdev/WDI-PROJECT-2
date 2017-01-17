@@ -94,8 +94,23 @@ const restaurants = [
     image: 'https://d6zktcp1soofu.cloudfront.net/kalbi-korean-bbq-sushi-13864/landscape.vlZDj_landscape.jpg',
     lat: '51.524197',
     lng: '-0.111090'
+  },
+
+  {
+    name: 'K Place',
+    image: 'https://i1.wp.com/londonkoreanlinks.net/wp-content/uploads/2015/05/IMG_4001.jpg',
+    lat: '51.510463',
+    lng: '-0.083454'
+  },
+
+  {
+    name: 'On The Bap - Old Street',
+    image: 'http://www.justopenedlondon.com/wp-content/uploads/2013/12/onthebabpic.jpg',
+    lat: '51.526904',
+    lng: '-0.081582'
   }
 ];
+
 
 
 
