@@ -26,16 +26,20 @@ App.loopThroughRestaurants = function(data) {
   });
 };
 
+const markerImage = '../images/marker1.png';
+
+
 App.addMarkerForRestaurant = function(restaurant) {
   const latlng = new google.maps.LatLng(restaurant.lat, restaurant.lng);
   const marker = new google.maps.Marker({
     position: latlng,
-    map: this.map
+    map: this.map,
+    icon: markerImage,
+    animation: google.maps.Animation.DROP
   });
 
   this.addInfoWindowForRestaurant(restaurant ,marker);
 };
-
 
 const styledMapType =
 [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"administrative.locality","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.neighborhood","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"visibility":"simplified"},{"saturation":"-28"},{"lightness":"-7"},{"gamma":"1.90"},{"weight":"1.98"}]},{"featureType":"landscape","elementType":"geometry.stroke","stylers":[{"lightness":"-13"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"labels.text","stylers":[{"hue":"#ff0000"},{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"weight":"4.93"}]},{"featureType":"poi","elementType":"geometry.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"},{"hue":"#ff0000"},{"saturation":"-41"},{"gamma":"2.64"},{"weight":"1.42"}]},{"featureType":"poi","elementType":"labels.text","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"visibility":"simplified"},{"saturation":"-20"},{"lightness":"-44"},{"weight":"2.39"},{"invert_lightness":true}]},{"featureType":"poi","elementType":"labels.text.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"poi.attraction","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.government","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.park","elementType":"all","stylers":[{"visibility":"on"},{"lightness":"-16"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi.school","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":"-25"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"},{"lightness":"-30"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"},{"lightness":"-62"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#8ac9cd"},{"visibility":"on"},{"saturation":"-33"},{"lightness":"13"},{"gamma":"0.84"},{"weight":"1.98"}]}]

@@ -38,3 +38,7 @@ stuck on a 404 error for one of my controller files restaurants
 Day5
 corrected bugs
 completed the MPV(adding database for restaurants and showing the map) + styling
+
+Day 6
+
+started styling the app, tried to change the icons but the picture isn't loading
