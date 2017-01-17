@@ -53,7 +53,7 @@ App.addInfoWindowForRestaurant = function(restaurant, marker) {
     this.infoWindow = new google.maps.InfoWindow({
       content: `
       <div class="info-window">
-        <img src=${ restaurant.image }>
+        <img class="restaurantImage"src=${ restaurant.image }>
         <p>${ restaurant.name }</p>
       </div>
       `
