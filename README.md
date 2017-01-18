@@ -62,7 +62,7 @@ Additions:
  
  2) wins 
 
- wins - putting in the time, completed my objectives, 
+ wins - putting in the time, completed my objectives, got better at planning and problem solving - breaking down tackling one problem at a time
 
 3) to do in the future 
 
