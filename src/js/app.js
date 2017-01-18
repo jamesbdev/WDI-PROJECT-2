@@ -37,7 +37,7 @@ App.addMarkerForRestaurant = function(restaurant) {
     icon: markerImage,
     animation: google.maps.Animation.DROP
   });
-
+  App.markersArray.push(marker);
   this.addInfoWindowForRestaurant(restaurant ,marker);
 };
 
@@ -130,10 +130,14 @@ App.logout = function(e) {
   e.preventDefault();
   $('.loggedIn').hide();
   $('.loggedOut').show();
+  App.markersArray.forEach(marker => {
+    marker.setMap(null);
+  });
   return window.localStorage.clear();
 };
 
 App.init = function() {
+  this.markersArray = [];
   this.apiUrl = 'http://localhost:3000/api';
   this.$main = $('main');
   $('.register').on('click', this.register.bind(this));

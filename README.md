@@ -54,12 +54,16 @@ Additions:
 - ratings in info view
 - telephone number
 
-personal challenges 
+1) personal challenges 
  connecting everything together (express, authentication,google maps, routes ...) 
  
  solving issues and getting stuck 
  things I wanted to improve: overall knowledge of express, authentication, bootstrap(review) 
  
- adding more features 
- 
+ 2) wins 
+
  wins - putting in the time, completed my objectives, 
+
+3) to do in the future 
+
+ adding more features, becoming more confident using javascript
