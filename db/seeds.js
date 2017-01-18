@@ -90,7 +90,7 @@ const restaurants = [
   },
 
   {
-    name: 'Kalbi Korean bbq and sushi',
+    name: 'Kalbi Korean BBQ and Sushi',
     image: 'https://d6zktcp1soofu.cloudfront.net/kalbi-korean-bbq-sushi-13864/landscape.vlZDj_landscape.jpg',
     lat: '51.524197',
     lng: '-0.111090'

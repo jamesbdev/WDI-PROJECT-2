@@ -69,8 +69,8 @@ App.addInfoWindowForRestaurant = function(restaurant, marker) {
 App.register = function(e) {
   e.preventDefault();
   this.$main.html(`
-  <h2>Register</h2>
-  <form method="post" action="/register">
+  <form method="post" action="/register" class="container">
+    <h2>Register</h2>
     <div class="form-group">
       <input class="form-control" type="text" name="user[username]" placeholder="Username">
     </div>
@@ -91,8 +91,8 @@ App.register = function(e) {
 App.login = function(e) {
   e.preventDefault();
   this.$main.html(`
-    <h2>Login</h2>
-    <form method="post" action="/login">
+    <form method="post" action="/login" class="container">
+      <h2>Login</h2>
       <div class="form-group">
         <input class="form-control" type="email" name="email" placeholder="Email">
       </div>
@@ -117,6 +117,8 @@ App.handleForm = function(e) {
     data
   }).done(data => {
     if(data.token){
+      $('.loggedIn').show();
+      $('.loggedOut').hide();
       App.mapSetup();
     }
   }).fail(data => {
@@ -124,13 +126,29 @@ App.handleForm = function(e) {
   });
 };
 
+App.logout = function(e) {
+  e.preventDefault();
+  $('.loggedIn').hide();
+  $('.loggedOut').show();
+  return window.localStorage.clear();
+};
+
 App.init = function() {
   this.apiUrl = 'http://localhost:3000/api';
   this.$main = $('main');
   $('.register').on('click', this.register.bind(this));
   $('.login').on('click', this.login.bind(this));
+  $('.logout').on('click', this.logout.bind(this));
   this.$main.on('submit', 'form', this.handleForm);
   this.mapSetup();
+
+  if (window.localStorage.getItem('token')) {
+    $('.loggedIn').show();
+    $('.loggedOut').hide();
+  } else {
+    $('.loggedIn').hide();
+    $('.loggedOut').show();
+  }
 };
 
 $(App.init.bind(App));

@@ -5,15 +5,16 @@
   <title>Restaurants</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Qvo8Fw0a3p2qXWQ9H1vyrluvGMNak38&callback=initMap" sync defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7Qvo8Fw0a3p2qXWQ9H1vyrluvGMNak38" sync defer></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" charset="utf-8"></script>
   <script src="/js/app.js"></script>
 </head>
 <body>
   <header>
     <nav class="navbar navbar-default">
-      <div class="container-fluid">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -25,15 +26,14 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">View Restaurants</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a class="login" href="#">Login</a></li>
-                <li class="nav-link register"><a class="register" href="#">Register</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="#">Logout</a></li>
-              </ul>
+            <li class="nav-link login loggedOut">
+              <a class="login" href="#">Login</a>
+            </li>
+            <li class="nav-link register loggedOut">
+              <a class="register" href="#">Register</a>
+            </li>
+            <li class="nav-link logout loggedIn">
+              <a href="#">Logout</a>
             </li>
           </ul>
         </div>

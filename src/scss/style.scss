@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  background-color: #fff2e6;
+  font-family: 'PT Sans', sans-serif;
 }
 
 #map-container {
@@ -9,12 +11,17 @@ body {
 }
 
 img {
-      height: 279px;
+  height: 279px;
 }
 
 .info-window {
   width: 300px;
   max-height: 300px;
+  margin-left: auto;
+  font-style: italic;
+  font-family: fantasy;
+  background-color: #fff2e6;
+  margin: 0 auto;
 }
 
 .restaurantImage {
@@ -22,6 +29,55 @@ img {
   border: 20px;
 }
 
-p{
-  
+main {
+  width: 100%;
+  margin: auto;
+}
+
+.navbar-default {
+  background: #734534;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-default .navbar-brand {
+  color: #f2cd11;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+
+
+.btn {
+    padding: 20px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 5 none;
+}
+
+.btn-primary {
+    background: #734534;
+    color: #ffffff;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #734534;
+
+}
+
+.btn-primary:active, .btn-primary.active {
+    background: #734534;
+    box-shadow: none;
 }
