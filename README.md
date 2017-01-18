@@ -55,9 +55,9 @@ Additions:
 - telephone number
 
 1) personal challenges 
- connecting everything together (express, authentication,google maps, routes ...) 
+  - connecting everything together (express, authentication,google maps, routes ...) 
  
- solving issues and getting stuck 
+ - troubleshooting and getting stuck 
  things I wanted to improve: overall knowledge of express, authentication, bootstrap(review) 
  
  2) wins 
@@ -66,4 +66,4 @@ Additions:
 
 3) to do in the future 
 
- adding more features, becoming more confident using javascript
+ adding more features, becoming more confident using javascript, node js 
